@@ -365,6 +365,7 @@
 -(void)checkCollisions {
 	
 	// Bullet collision detection
+    NSMutableArray *bulletsToDestroy = [[NSMutableArray alloc] init];
 	for (Bullet *bullet in bullets) {
 		CGPoint tilePos = [UIAppDelegate.coordinateFunctions tilePosFromLocation:bullet.position];
 		if (([UIAppDelegate.coordinateFunctions isTilePosIsWithinBounds:tilePos]) && (bullet.isMoving)) {
@@ -381,7 +382,7 @@
 					CGSize winSize = [[CCDirector sharedDirector] winSize];
 					powerUpAlert.position = ccp(player.position.x, player.position.y);
 					[self addChild:powerUpAlert];
-					[self destroyBullet:bullet];
+                    [bulletsToDestroy addObject:bullet];
 					[self performSelector:@selector(startShootOut:) withObject:nil afterDelay:3];
 
 					[[CCDirector sharedDirector] pause];
@@ -392,25 +393,32 @@
 				// Check collision of bullets with landscape
 				if ([UIAppDelegate.coordinateFunctions isTilePosBlocked:tilePos]) {
 					NSLog(@"Bullet collision with landscape!");
-					[self destroyBullet:bullet];
+                    [bulletsToDestroy addObject:bullet];
 				} else {
 					// Check collision of bullets with attackers
+                    NSMutableArray *attackersToDestroy = [[NSMutableArray alloc] init];
 					for (Attacker *attacker in attackers) {
 						if ([UIAppDelegate.coordinateFunctions spritesCollided:bullet sprite2:attacker]) {
 							[attacker deathSequence];
-							[attackers removeObject:attacker];
-							[self destroyBullet:bullet];
+                            [bulletsToDestroy addObject:bullet];
 						}
-					}	
+					}
+                    for (Attacker *attacker in attackersToDestroy) {
+                        [attackers removeObject:attacker];
+                    }
+                    [attackersToDestroy release];
 				}
 			}
 		} else {
 			//bullet out of bounds
 			NSLog(@"Bullet out of bounds");
-			[self destroyBullet:bullet];
-
+            [bulletsToDestroy addObject:bullet];
 		}
 	}
+    for (Bullet *bullet in bulletsToDestroy) {
+        [self destroyBullet:bullet];
+    }
+    [bulletsToDestroy release];
 	
 	// Check if player is at door
 	CGPoint tilePos = [UIAppDelegate.coordinateFunctions tilePosFromLocation:[player getLocation]];
@@ -472,15 +480,18 @@
 		}
 	}
 	
+    NSMutableArray *attackersToDestroy = [[NSMutableArray alloc] init];
 	for (Attacker *attacker in attackers) {
 		//Check collision of player with attackers
 		if (([UIAppDelegate.coordinateFunctions spritesCollided:attacker sprite2:player]) && (attacker.alive)) {
 			[player deathSequence];
-			[attacker deathSequence];
-			
-			[attackers removeObject:attacker];
+            [attacker deathSequence];
 		}
 	}
+    for (Attacker *attacker in attackersToDestroy) {
+        [attackers removeObject:attacker];
+    }
+    [attackersToDestroy release];
 	
 	//Check collision of player with knight
 	if (([UIAppDelegate.coordinateFunctions spritesCollided:knight sprite2:player]) && (knight.alive)) {
