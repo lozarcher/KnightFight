@@ -1,0 +1,15 @@
+//
+// Prefix header for all source files of the 'KnightFight' target in the 'KnightFight' project
+//
+
+#ifdef __OBJC__
+	#import <Foundation/Foundation.h>
+	#import <UIKit/UIKit.h>
+
+#endif
+
+#ifndef __OPTIMIZE__
+#	define NSLog(...) NSLog(__VA_ARGS__)
+#else
+#	define NSLog(...) {}
+#endif

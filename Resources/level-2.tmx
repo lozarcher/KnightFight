@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="isometric" width="40" height="40" tilewidth="64" tileheight="32">
+ <tileset firstgid="1" name="medieval_building_tiles" tilewidth="64" tileheight="192">
+  <image source="medieval_building_tiles.png" width="1024" height="768"/>
+ </tileset>
+ <tileset firstgid="65" name="grass_tileset" tilewidth="64" tileheight="32">
+  <image source="grass_tileset.png" width="64" height="32"/>
+ </tileset>
+ <tileset firstgid="66" name="meta_tileset" tilewidth="64" tileheight="32">
+  <image source="meta_tileset.png" width="256" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="Collidable" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="Door" value="True"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="PlayerSpawn" value="True"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="GhostSpawn" value="True"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="70" name="iso-64x64-outside" tilewidth="64" tileheight="64">
+  <image source="iso-64x64-outside.png" width="640" height="1024"/>
+ </tileset>
+ <layer name="Grass" width="40" height="40">
+  <properties>
+   <property name="cc_vertexz" value="-1000"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3DAQkAAAwEoav2/Uutx1Bw1VRVVVVVVR89aZDcZwAZAAA=
+  </data>
+ </layer>
+ <layer name="Meta" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+2X0QrDMAhF823Z+v+/VPZQKEGbq7lOCznQly4zZ5opaS2fni0wAfE7wi107n6Sx6G89+CJ46mv90z80+96VtBi9IbtMa5DHo/fx+ln2UPbC/nuLCbTD1nTh/faestv9fohOcoEOWOZoA7ZnjOy/KR9v8A6Sy9fmW9oXjy9k0FFP09/9fpptbX0Y8t+KKif1OOf/Jize/b5LH+Ie1SfZsVkzNiRKrNJg+WXea95A5XOgVSrSn4/JEf0/xnZaxiw/aL6KdOPWQvmnegeL3pOMVi5A7N46vXR+VudM1Xqu+dlDDuvmwhOVIS9RQAZAAA=
+  </data>
+ </layer>
+ <layer name="Environment" width="40" height="40">
+  <properties>
+   <property name="cc_vertexz" value="automatic"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+2XWwrCMBBFZ+F1HYri48cf6QL6oRYqtPtwJTaYYBzIa/IasQcuokR70jrJpAOATqbXkpP9nJ2MoLGM7aCeXyvfp/LDn1PnIfwuwPf+Yf7db9Si/14KVoZw8UsBdz9Bg5KbMeK7pesrlBprQAooz/3hiOCaxI7m1zkyJLyua9x5zkHmyMzvCd99wwbe6/DdEYqfaa6ueai+YStj81P4+GGofsKpla/q/vWGxED1W2s5Wfxqoj87MR9ufphf9PNxFHVzQ6HUkgvbvuHjN8Gnt8rhR0X5Kbj7cYO7Xwr0elT/4UlG1VyOa4aMLe0XAtUv5uwRQoxfCUdX72k6o5Y4yw4M/fT9iYMfrmW8v1D9ciH89P68lJ/vmlfLz5fFb/HDeQHHyBg1ABkAAA==
+  </data>
+ </layer>
+ <layer name="Houses" width="40" height="40">
+  <properties>
+   <property name="cc_vertexz" value="automatic"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+2X2QoCMQxF6wbiioIPLg8VBBXnTf//20ywyCCZVtJ0QXPgwtDSS2YIvRNjFKU+BqULCHAR9JoF9jnfYkvoAbIMrwWxdgXdQHfQgeH5yRjUgNaMs5ZY6znPFWjEL+tN49RnnLXE2pDpRYFee9DZ4+nrsZ1QHTFQPTYxr76dZq6FqqN0DYpSKyWzuutek84nLtS9hoTyaUPolKA+27HuyyfcOzph5izds1SetbEJPCWpITspasnOfyH0D18K7IO5+b0+qHE+lM4c6XeUnokkZ2BEciZCJGfgHMTMwDmImYFT880MrCiK0uYJ0ngzuQAZAAA=
+  </data>
+ </layer>
+</map>
