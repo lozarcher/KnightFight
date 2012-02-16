@@ -398,10 +398,12 @@
 					// Check collision of bullets with attackers
                     NSMutableArray *attackersToDestroy = [[NSMutableArray alloc] init];
 					for (Attacker *attacker in attackers) {
-						if ([UIAppDelegate.coordinateFunctions spritesCollided:bullet sprite2:attacker]) {
-							[attacker deathSequence];
-                            [bulletsToDestroy addObject:bullet];
-						}
+                        if ([attacker alive]) {
+                            if ([UIAppDelegate.coordinateFunctions spritesCollided:bullet sprite2:attacker]) {
+                                [attacker deathSequence];
+                                [bulletsToDestroy addObject:bullet];
+                            }
+                        }
 					}
                     for (Attacker *attacker in attackersToDestroy) {
                         [attackers removeObject:attacker];
